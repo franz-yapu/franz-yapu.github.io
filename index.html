@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Franz Jhonny Yapu Mamani - Full Stack Engineer. TypeScript, Angular, Node.js and AI-assisted development.">
+<title>Franz Yapu — Full Stack</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#EEF1F3;
+    --panel:#F8FAFB;
+    --ink:#101820;
+    --ink-soft:#4A5661;
+    --line:#D3DADF;
+    --accent:#0E6E6B;
+    --accent-soft:#D8E8E6;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D1216;
+      --panel:#141B21;
+      --ink:#E7EDF1;
+      --ink-soft:#9FAEB9;
+      --line:#26313A;
+      --accent:#4FC3BC;
+      --accent-soft:#16302F;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0D1216;
+    --panel:#141B21;
+    --ink:#E7EDF1;
+    --ink-soft:#9FAEB9;
+    --line:#26313A;
+    --accent:#4FC3BC;
+    --accent-soft:#16302F;
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Source Serif 4",Georgia,serif;
+    font-size:17px;
+    line-height:1.55;
+    padding-inline:20px;
+    padding-block:0;
+  }
+  .wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:52px;padding-block:56px 72px}
+  h1,h2,h3,.mono{font-family:"Archivo","Helvetica Neue",Arial,sans-serif}
+  .mono,.label{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  .label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0}
+
+  header{display:flex;flex-direction:column;gap:18px}
+  h1{font-size:clamp(34px,6vw,52px);line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+  .role{font-size:clamp(17px,2.4vw,20px);color:var(--ink-soft);margin:0;max-width:60ch}
+  .thesis{font-size:clamp(19px,2.8vw,23px);margin:0;max-width:56ch;border-left:3px solid var(--accent);padding-left:18px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:var(--ink-soft);font-family:"JetBrains Mono",monospace}
+  .meta a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .meta a:hover{border-color:var(--accent)}
+
+  section{display:flex;flex-direction:column;gap:20px}
+  h2{font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:0;color:var(--ink-soft);
+     border-top:1px solid var(--line);padding-top:14px;font-weight:600}
+  p{margin:0;max-width:66ch}
+  .lead{font-size:18px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stat{background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+  .stat b{font-family:"Archivo",sans-serif;font-size:26px;font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .stat span{font-size:12px;color:var(--ink-soft);font-family:"JetBrains Mono",monospace;line-height:1.35}
+
+  .work{display:flex;flex-direction:column;gap:26px}
+  article{display:grid;grid-template-columns:130px 1fr;gap:24px;align-items:start}
+  article .when{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-soft);padding-top:5px;line-height:1.5}
+  article h3{margin:0 0 6px;font-size:19px;letter-spacing:-.01em}
+  article p+p{margin-top:10px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .tag{font-family:"JetBrains Mono",monospace;font-size:11px;padding:3px 8px;background:var(--accent-soft);color:var(--accent);border-radius:2px}
+
+  .rows{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:190px 1fr;gap:20px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .row dt{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-soft);margin:0;padding-top:3px}
+  .row dd{margin:0;font-size:16px}
+
+  .deploy{display:flex;flex-wrap:wrap;gap:10px}
+  .place{font-family:"JetBrains Mono",monospace;font-size:12px;border:1px solid var(--line);padding:5px 10px;background:var(--panel)}
+
+  ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;max-width:66ch}
+  li::marker{color:var(--accent)}
+  .note{font-size:14px;color:var(--ink-soft);max-width:66ch}
+  footer{border-top:1px solid var(--line);padding-top:22px;display:flex;flex-direction:column;gap:10px}
+  .contact{font-family:"JetBrains Mono",monospace;font-size:14px;display:flex;flex-direction:column;gap:6px}
+  .contact span{color:var(--ink-soft)}
+  @media (max-width:560px){
+    article{grid-template-columns:1fr;gap:8px}
+    .row{grid-template-columns:1fr;gap:4px}
+  }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <p class="label">Full Stack Engineer · El Alto, Bolivia · Remote</p>
+    <h1>Franz Jhonny Yapu Mamani</h1>
+    <p class="role">Seven years building and running web platforms end to end — TypeScript from database to interface, plus the Linux servers they run on. The last year spent building with AI agents and checking what they produce.</p>
+    <p class="thesis">AI accelerates generation. The bottleneck moves to validation — that is where I do my work.</p>
+    <div class="meta">
+      <span>yhonnyyapu@gmail.com</span>
+      <span>+591 611 39545</span>
+      <a href="https://www.linkedin.com/in/franz-jhonny-yapu-mamani-bab89018a" target="_blank" rel="noopener">LinkedIn</a>
+      <span>English B1–B2 · Spanish native</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="stats">
+      <div class="stat"><b>7+</b><span>years in production</span></div>
+      <div class="stat"><b>30+</b><span>web apps shipped</span></div>
+      <div class="stat"><b>15+</b><span>Angular apps, v9 → v19</span></div>
+      <div class="stat"><b>6</b><span>years remote for a Panama-based company</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How I work with AI</h2>
+    <p class="lead">Coding agents are part of my daily workflow, not an experiment. What makes them safe to use is the review layer around them.</p>
+    <ul>
+      <li><b>Tooling.</b> Claude Code every day, with my own skills, prompt templates and context handoffs between sessions. MCP servers connect the agents to real systems — task tracker, repositories, databases — so they work from facts instead of guesses.</li>
+      <li><b>In product.</b> Claude SDK integrated into applications: multi-step agents with typed tools, OCR and transcription, under a redaction policy that strips personal data before anything leaves the system.</li>
+      <li><b>Validation.</b> Generated code and documentation are checked against the actual repository before they are merged. An agent once created task dependencies that did not exist; catching it before it blocked the team is the reason every workflow I build has explicit checkpoints and automated tests.</li>
+      <li><b>Transfer.</b> I documented that workflow and trained new team members on it, including someone starting from zero.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Selected work</h2>
+    <div class="work">
+      <article>
+        <div class="when">2026<br>Tutator</div>
+        <div>
+          <h3>Casper</h3>
+          <p>The first project in the organization built almost entirely with AI agents, on top of an internal core of skills and workflows. The task is defined, the agent resolves it, the team supervises and validates the result. I worked on the product itself and on the practices that made the workflow repeatable for others.</p>
+          <div class="tags"><span class="tag">Claude Code</span><span class="tag">MCP</span><span class="tag">agent workflows</span><span class="tag">code review</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="when">2020–2026<br>Tutator</div>
+        <div>
+          <h3>Offline-first field platforms</h3>
+          <p>Web and mobile applications for social programs, deployed where electricity and connectivity are partial. Local mutation queue and file store, background synchronization and conflict resolution, so field teams keep working through outages and the data reconciles when the link returns.</p>
+          <p>Multi-language throughout — Spanish, English, French, Portuguese and Arabic, including a right-to-left interface.</p>
+          <div class="tags"><span class="tag">Angular</span><span class="tag">PWA + SSR</span><span class="tag">Fastify</span><span class="tag">PostgreSQL</span><span class="tag">i18n / RTL</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="when">2020–2026<br>Tutator</div>
+        <div>
+          <h3>Platform backend and infrastructure</h3>
+          <p>REST services with Fastify and NestJS over Prisma and PostgreSQL, real-time embeddable widgets with Socket.io, and asynchronous queues on BullMQ and Redis for OCR, antivirus scanning and reporting. Authentication with JWT and passkeys, role-based authorization with Casbin, anonymization of personal data.</p>
+          <p>I also ran the servers: Linux VPS configured from scratch with Docker, Nginx, PM2 and PgBouncer, CI on GitHub Actions, observability with Sentry and OpenTelemetry.</p>
+          <div class="tags"><span class="tag">NestJS</span><span class="tag">Prisma</span><span class="tag">Redis / BullMQ</span><span class="tag">Docker</span><span class="tag">Sentry</span></div>
+        </div>
+      </article>
+
+      <article>
+        <div class="when">2017–2018<br>Public sector</div>
+        <div>
+          <h3>Volar Alto Sin Violencia</h3>
+          <p>Mobile application for violence prevention, published on Google Play for a municipal program in El Alto. Delivered alongside an institutional web platform, an inventory control system and a petty-cash system — analysis, design and implementation, working directly with the people who would use them.</p>
+          <div class="tags"><span class="tag">Ionic</span><span class="tag">Android</span><span class="tag">requirements</span></div>
+        </div>
+      </article>
+    </div>
+    <p class="note">Professional code lives in the organization's private repositories, so the projects above are described rather than linked. Happy to walk through architecture, trade-offs and decisions in a call.</p>
+  </section>
+
+  <section>
+    <h2>Where the platforms run</h2>
+    <div class="deploy">
+      <span class="place">Bolivia</span>
+      <span class="place">Mexico</span>
+      <span class="place">Nicaragua</span>
+      <span class="place">France</span>
+      <span class="place">Burkina Faso</span>
+      <span class="place">Saudi Arabia</span>
+      <span class="place">+ other deployments in Latin America, Europe and Africa</span>
+    </div>
+    <p class="note">Working across these contexts is what pushed the offline-first and localization work: intermittent power, low bandwidth, five languages and a right-to-left script in the same codebase.</p>
+  </section>
+
+  <section>
+    <h2>Stack</h2>
+    <dl class="rows">
+      <div class="row"><dt>Frontend</dt><dd>Angular v9–v19 with TypeScript, NGRX, RxJS, PrimeNG, Tailwind CSS. React 19 and Next.js 16 in 2026 projects. Vue.js and Ionic earlier.</dd></div>
+      <div class="row"><dt>Backend</dt><dd>Node.js with Fastify, NestJS, Express and LoopBack. Prisma, Zod schemas shared across the stack, Socket.io, BullMQ.</dd></div>
+      <div class="row"><dt>Data</dt><dd>PostgreSQL, MySQL, MariaDB, Redis. MongoDB, Supabase and Firebase on specific projects.</dd></div>
+      <div class="row"><dt>Mobile</dt><dd>Flutter — full modules in two production apps. Android and Ionic previously.</dd></div>
+      <div class="row"><dt>Quality</dt><dd>Vitest, Playwright, Testing Library, axe-core for accessibility, Storybook, all running in CI.</dd></div>
+      <div class="row"><dt>Infrastructure</dt><dd>Docker and Compose, Portainer, GitHub Actions, Nginx, PM2, PgBouncer, Linux VPS from scratch. Sentry and OpenTelemetry.</dd></div>
+      <div class="row"><dt>AI</dt><dd>Claude Code, Claude SDK, custom skills, MCP servers, Langfuse for prompt versioning and traces. Also Gemini, Qwen, NotebookLM and Antigravity.</dd></div>
+      <div class="row"><dt>Practice</dt><dd>Scrum for six years, Kanban, ClickUp, pnpm and Turborepo monorepos, peer code review.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Education and certification</h2>
+    <dl class="rows">
+      <div class="row"><dt>Systems Engineering</dt><dd>Universidad Pública de El Alto — coursework and thesis defense completed and approved; formal graduation ceremony pending.</dd></div>
+      <div class="row"><dt>Higher Technical Degree</dt><dd>Systems Analysis, Universidad Pública de El Alto, 2018.</dd></div>
+      <div class="row"><dt>Certificates</dt><dd>Claude Code (15 h, 2026) · Angular (35.5 h, 2019) · Node.js (29 h, 2026) · React (46 h, 2026) · Python (36.5 h, 2026) · DevOps with Docker and CI/CD (10 h, 2022) · Scrum Master and Product Owner (18 h, 2026). All Udemy, verifiable by certificate number.</dd></div>
+      <div class="row"><dt>In progress</dt><dd>QA Automation with Playwright and TypeScript — E2E, API and mobile testing.</dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    <p class="label">Open to work</p>
+    <p>Available immediately for remote roles, or on-site in La Paz / El Alto. Comfortable overlapping with US time zones — Bolivia sits within an hour of US Eastern.</p>
+    <div class="contact">
+      <span>email</span>yhonnyyapu@gmail.com
+      <span>phone / WhatsApp</span>+591 611 39545
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
